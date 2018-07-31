@@ -1,9 +1,8 @@
 package main
 
 import (
-	"tgbotslab/imgur-uploader-bot"
-
 	"github.com/integrii/flaggy"
+	"github.com/tgbotslab/imgur-uploader-bot"
 )
 
 const version = "0.1"
