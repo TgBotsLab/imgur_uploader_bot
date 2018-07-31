@@ -27,7 +27,7 @@ const (
 	photoUploaded      = "Your photo was successfully uploaded to Imgur."
 )
 
-func Init(token, clientID, tmpDir string) {
+func Init(token, clientID, tmpDir, descPhoto string) {
 	log.Println("Imgur Uploader Bot is started")
 
 	// Connect to Telegram bot API
@@ -69,7 +69,10 @@ func Init(token, clientID, tmpDir string) {
 
 		// Uploading to Imgur was taken from
 		// https://github.com/mattn/imgur/blob/master/imgur.go
-		params := url.Values{"image": {base64.StdEncoding.EncodeToString(bFile)}}
+		params := url.Values{
+			"image":       {base64.StdEncoding.EncodeToString(bFile)},
+			"description": {descPhoto},
+		}
 
 		req, err := http.NewRequest("POST", endpoint, strings.NewReader(params.Encode()))
 		if err != nil {
